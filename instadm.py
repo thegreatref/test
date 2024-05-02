@@ -1,13 +1,32 @@
 from flask import Flask, request, jsonify
-import os
+from instagrapi import Client
 
 app = Flask(__name__)
 
-# Example endpoint to greet the user
-@app.route('/greet', methods=['GET'])
-def greet_user():
-    name = request.args.get('name', 'World')
-    return jsonify({'message': f'Hello, {name}!'})
+# Initialize Instagrapi client
+client = Client()
+
+# Example endpoint to send a direct message
+@app.route('/send_message', methods=['GET'])
+def send_direct_message():
+    try:
+        # Get target username and message from the query parameters
+        target_username = request.args.get('username')
+        message = request.args.get('message')
+
+        # Login to your Instagram account
+        client.login('cashflowsensitive', '#CashFlowSensitive08')
+
+        # Get the user ID of the target user
+        user_info_dict = client.search_users(target_username)
+        target_user_id = user_info_dict[0].pk
+
+        # Send the direct message
+        client.direct_send(message, [target_user_id])
+        
+        return jsonify({"status": "success", "message": "Direct message sent successfully!"}), 200
+    except Exception as e:
+        return jsonify({"status": "error", "message": str(e)}), 500
 
 if __name__ == '__main__':
     # Use PORT environment variable if available, or default to 5000
