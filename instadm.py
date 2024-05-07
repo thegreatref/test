@@ -29,6 +29,28 @@ def send_direct_message():
     except Exception as e:
         return jsonify({"status": "error", "message": str(e)}), 500
 
+@app.route('/upload', methods=['GET','POST'])
+def upload_post():
+    # Get data from the POST request
+    username = request.args.get('username')
+    password = request.args.get('password')
+    video_path = request.args.get('video_path')
+    caption = request.args.get('caption')
+
+    # Initialize the client
+    cl = Client()
+
+    # Log in
+    cl.login(username, password)
+
+    # Upload the post
+    cl.clip_upload(
+        path=video_path,
+        caption=caption
+    )
+
+    return 'Post uploaded successfully!'
+
 if __name__ == '__main__':
     # Use PORT environment variable if available, or default to 5000
     port = int(os.environ.get('PORT', 5000))
