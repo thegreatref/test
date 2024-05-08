@@ -1,6 +1,7 @@
 from flask import Flask, request, jsonify
 from instagrapi import Client
 import os
+import requests
 
 app = Flask(__name__)
 
@@ -37,12 +38,14 @@ def upload_post():
     video_path = request.args.get('video_path')
     caption = request.args.get('caption')
 
+    path = requests.get(video_path)
+    
     # Log in
     client.login(username, password)
 
     # Upload the post
     client.clip_upload(
-        path=video_path,
+        path=path,
         caption=caption
     )
 
