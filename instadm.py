@@ -37,17 +37,14 @@ def upload_post():
     video_path = request.args.get('video_path')
     caption = request.args.get('caption')
 
-    # Initialize the client
-    cl = Client()
-
     # Log in
-    cl.login(username, password)
+    client.login(username, password)
 
     # Upload the post
-    cl.clip_upload(
-        path=video_path,
-        caption=caption
-    )
+    #client.clip_upload(
+    #    path=video_path,
+    #    caption=caption
+    #)
 
     return 'Post uploaded successfully!'
 
