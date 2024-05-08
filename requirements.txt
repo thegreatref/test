@@ -61,6 +61,7 @@ python-telegram-bot==21.0.1
 pywin32-ctypes==0.2.2
 PyYAML==6.0.1
 regex==2023.12.25
+requests==2.26.0
 rich==13.7.1
 schema==0.7.5
 semantic-version==2.10.0
