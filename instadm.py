@@ -41,10 +41,10 @@ def upload_post():
     client.login(username, password)
 
     # Upload the post
-    #client.clip_upload(
-    #    path=video_path,
-    #    caption=caption
-    #)
+    client.clip_upload(
+        path=video_path,
+        caption=caption
+    )
 
     return 'Post uploaded successfully!'
 
