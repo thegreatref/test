@@ -8,7 +8,7 @@ blinker==1.8.1
 certifi==2024.2.2
 cffi==1.16.0
 chardet==3.0.4
-charset-normalizer==3.3.2
+charset-normalizer>=2.0.0
 clarifai==2.6.2
 clarifai-grpc==10.2.3
 click==8.1.7
