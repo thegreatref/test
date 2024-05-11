@@ -41,7 +41,7 @@ def upload_post():
     path = requests.get(video_path)
     
     # Log in
-    client.login(username, password)
+    client.login('{username}', '{password}')
 
     # Upload the post
     client.clip_upload(
