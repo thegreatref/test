@@ -79,3 +79,4 @@ wcwidth==0.2.13
 webdriverdownloader==1.1.0.4
 Werkzeug==3.0.2
 wsproto==1.2.0
+gunicorn
